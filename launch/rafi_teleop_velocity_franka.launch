@@ -21,7 +21,7 @@
     <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false" output="screen" args="cartesian_velocity_example_controller"/>
 
     <!-- Interpretador del mando para Franka-->
-    <include file="$(find joy_franka_vel_control)/launch/teleop_franka_vel_without_joy.launch"/>
+    <include file="$(find joy_franka_vel_control)/launch/teleop_franka_without_joy.launch"/>
 
 </launch>
 
