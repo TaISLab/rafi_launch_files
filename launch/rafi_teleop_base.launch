@@ -13,7 +13,7 @@
     <include file="$(find roboclaw_node)/launch/roboclaw.launch"/>
 
     <!-- Interpretador del mando para la base -->
-    <include file="$(find joy_base_control)/launch/teleop_twist_joy.launch"/>
+    <include file="$(find joy_base_control)/launch/teleop_twist.launch"/>
 
 </launch>
 
