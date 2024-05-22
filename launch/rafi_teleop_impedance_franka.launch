@@ -21,14 +21,8 @@
     <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false" output="screen" args="cartesian_impedance_example_controller"/>
     <node name="rqt_reconfigure" pkg="rqt_reconfigure" type="rqt_reconfigure" required="false" />
 
-    <!-- Control de velocidad de la base-->
-    <include file="$(find roboclaw_node)/launch/roboclaw.launch"/>
-
     <!-- Interpretador del mando para Franka-->
-    <include file="$(find joy_franka_control)/launch/teleop_franka.launch"/>
-
-    <!-- Interpretador del mando para la base -->
-    <include file="$(find joy_base_control)/launch/teleop_twist_without_joy.launch"/>
+    <include file="$(find joy_franka_control)/launch/teleop_franka_without_joy.launch"/>
 
 </launch>
 
