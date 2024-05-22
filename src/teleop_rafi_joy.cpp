@@ -60,6 +60,8 @@ namespace teleop_rafi_joy
     int x_button;
     int y_button;
 
+    bool B_abierto;
+
   };
 
   /**
@@ -83,6 +85,8 @@ namespace teleop_rafi_joy
     nh_param->param<int>("b_button", pimpl_->b_button, -1);
     nh_param->param<int>("x_button", pimpl_->x_button, -1);
     nh_param->param<int>("y_button", pimpl_->y_button, -1);
+
+    pimpl_->B_abierto = false;
 
   }
 
@@ -117,13 +121,33 @@ namespace teleop_rafi_joy
       ROS_INFO("Retorno: %i", ret);
       (void)ret;
 
+      /*
+        if A no se ha pulsado:
+          abre terminator
+          if !system(terminator) -> abierto_A=1;
+        else if A abierto:
+          cerrar terminator
+      */
+
     }
     else if (joy_msg->buttons[b_button]) // Boton izquierdo
     {
-
       ROS_INFO("Boton B pulsado");
-      int ret = system("rosrun rqt_graph rqt_graph");
-      (void)ret;
+
+      if (!B_abierto){
+        int ret = system("rosrun rqt_graph rqt_graph");
+        if(!ret){
+          B_abierto=true;
+          ROS_INFO("B_abierto: %s", B_abierto ? "true" : "false");
+        }
+        (void)ret;
+    
+      } else if (B_abierto){
+        int ret = system("rosnode kill rqt_graph");
+        if(!ret) B_abierto=false;
+        (void)ret;
+      }
+
     }
 
     ros::Duration(reaction_t).sleep(); // Espera un tiempo de reaccion del operador

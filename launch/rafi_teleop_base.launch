@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<launch>
+
+    <!--
+    Este launch se encarga de lanzar:
+    - base en control de velocidad
+    - franka en control de impedancia
+    - controlador del mando para la base
+    - controlador del mando para el franka
+    -->
+
+    <!-- Control de velocidad de la base-->
+    <include file="$(find roboclaw_node)/launch/roboclaw.launch"/>
+
+    <!-- Interpretador del mando para la base -->
+    <include file="$(find joy_base_control)/launch/teleop_twist_joy.launch"/>
+
+</launch>
+
