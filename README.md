@@ -11,7 +11,18 @@ El contenido de la carpeta `/launch` es:
 - `rafi_impedance.launch`: Lanza el controlador de la base, el controlador de impedancia cartesiana del manipulador y los nodos relacionados con la teleoperación de ambos. Este archivo permite modificar la velocidad cartesiana de la base y la pose del efector final del manipulador desde el mando.
 - `rafi_velocity.launch`: Lanza el controlador de la base, el controlador de velocidad cartesiana del manipulador junto con los nodos relacionados con la teleoperación de ambos controladores. Este archivo permite comandar velocidades cartesianas para la base y velocidades cartesianas para el efector final del manipulador desde el mando.
 
+
 ## Instalación
+
+### Paquetes necesarios
+
+Para su uso, se debe tener instalados los siguientes paquetes. Se adjunta el enlace que contiene información sobre su instalación.
+- `joy_base_control`. Disponible en: https://github.com/rodri-castro/joy_base_control.git
+- `joy_franka_control`. Disponible en: https://github.com/rodri-castro/joy_franka_control.git
+- `joy_franka_vel_control`. Disponible en: https://github.com/rodri-castro/joy_franka_vel_control.git
+
+### Instalación de este paquete
+
 ```bash
 git clone https://github.com/rodri-castro/rafi_launch_files.git
 catkin_make
