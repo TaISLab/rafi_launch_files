@@ -2,11 +2,16 @@
 <launch>
 
     <!--
-    Este launch se encarga de lanzar:
-    - base en control de velocidad
-    - franka en control de impedancia
-    - controlador del mando para la base
-    - controlador del mando para el franka
+    Teleoperación del esquema B de RAFI: controlador de velocidad cartesiana del manipulador + controlador de la base.
+    Este archivo:
+    - Lanza el cartesian velocity example controller de Franka
+    - Lanza el controlador de la base
+    - Lanza los nodos de teleoperación: nodo driver del mando , nodo de teleoperación de base y nodo de teleoperación del manipulador
+
+    Antes de ejecutar roslaunch se debe:
+    - Desbloquear Franka y activar FCI
+    - Mover el manipulador a la pose inicial.
+
     -->
 
     <!-- Parámetros -->
@@ -15,12 +20,12 @@
     <arg name="robot_ip" value="172.16.0.2"/>
     <arg name="load_gripper" default="false" />
 
-    <!-- Control de velocidad de franka-->
+    <!-- Controlador de velocidad de franka-->
     <include file="$(find franka_control)/launch/franka_control.launch" pass_all_args="true"/>
     <rosparam command="load" file="$(find franka_example_controllers)/config/franka_example_controllers.yaml" subst_value="true" />
     <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false" output="screen" args="cartesian_velocity_example_controller"/>
 
-    <!-- Interpretador del mando para Franka-->
+    <!-- Teleoperacion del controlador de velocidad de Franka-->
     <include file="$(find joy_franka_vel_control)/launch/teleop_franka_without_joy.launch"/>
 
     <!-- Teleoperacion de la base-->

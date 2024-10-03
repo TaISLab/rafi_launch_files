@@ -2,11 +2,14 @@
 <launch>
 
     <!--
-    Este launch se encarga de lanzar:
-    - base en control de velocidad
-    - franka en control de impedancia
-    - controlador del mando para la base
-    - controlador del mando para el franka
+    Teleoperación del controlador de impedancia cartesiana del manipulador.
+    Este archivo:
+    - Lanza el cartesian impedance example controller de Franka
+    - Lanza los nodos de teleoperación: nodo driver del mando y nodo de teleoperación
+
+    Antes de ejecutar roslaunch se debe:
+    - Desbloquear Franka y activar FCI
+
     -->
 
     <!-- Parámetros -->
@@ -15,13 +18,13 @@
     <arg name="robot_ip" value="172.16.0.2"/>
     <arg name="load_gripper" default="false" />
 
-    <!-- Control de impedancia de franka-->
+    <!-- Controlador de impedancia de franka-->
     <include file="$(find franka_control)/launch/franka_control.launch" pass_all_args="true"/>
     <rosparam command="load" file="$(find franka_example_controllers)/config/franka_example_controllers.yaml" subst_value="true" />
     <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false" output="screen" args="cartesian_impedance_example_controller"/>
     <node name="rqt_reconfigure" pkg="rqt_reconfigure" type="rqt_reconfigure" required="false" />
 
-    <!-- Interpretador del mando para Franka-->
+    <!-- Teleoperacion del manipulador-->
     <include file="$(find joy_franka_control)/launch/teleop_franka_without_joy.launch"/>
 
 </launch>

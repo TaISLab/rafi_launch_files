@@ -2,17 +2,17 @@
 <launch>
 
     <!--
-    Este launch se encarga de lanzar:
-    - base en control de velocidad
-    - franka en control de impedancia
-    - controlador del mando para la base
-    - controlador del mando para el franka
+    Teleoperación del controlador de la base de RAFI
+    Este archivo:
+    - Lanza el controlador de la base
+    - Lanza los nodos de teleoperación: nodo driver del mando y nodo de teleoperación de base.
+
     -->
 
-    <!-- Control de velocidad de la base-->
+    <!-- Controlador de velocidad de la base-->
     <include file="$(find roboclaw_node)/launch/roboclaw.launch"/>
 
-    <!-- Interpretador del mando para la base -->
+    <!-- Teleoperacion del controlador de la base -->
     <include file="$(find joy_base_control)/launch/teleop_twist.launch"/>
 
 </launch>
