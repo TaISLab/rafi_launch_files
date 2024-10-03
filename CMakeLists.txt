@@ -115,17 +115,17 @@ catkin_package(
 
 ## Specify additional locations of header files
 ## Your package locations should be listed before other locations
-include_directories(
-    include
-    ${catkin_INCLUDE_DIRS}
-)
+#include_directories(
+#    include
+#    ${catkin_INCLUDE_DIRS}
+#)
 
 ## Declare a C++ library
 # add_library(${PROJECT_NAME}
 #   src/${PROJECT_NAME}/rafi_launch_files.cpp
 # )
 
-add_library(teleop_rafi_joy src/teleop_rafi_joy.cpp)
+# add_library(teleop_rafi_joy src/teleop_rafi_joy.cpp)
 
 ## Add cmake target dependencies of the library
 ## as an example, code may need to be generated before libraries
@@ -137,7 +137,7 @@ add_library(teleop_rafi_joy src/teleop_rafi_joy.cpp)
 ## The recommended prefix ensures that target names across packages don't collide
 
 # add_executable(${PROJECT_NAME}_node src/teleop_rafi_node.cpp)
-add_executable(teleop_rafi_node src/teleop_rafi_node.cpp src/teleop_rafi_joy.cpp)
+# add_executable(teleop_rafi_node src/teleop_rafi_node.cpp src/teleop_rafi_joy.cpp)
 
 
 ## Rename C++ executable without prefix
@@ -151,10 +151,10 @@ add_executable(teleop_rafi_node src/teleop_rafi_node.cpp src/teleop_rafi_joy.cpp
 # add_dependencies(${PROJECT_NAME}_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 ## Specify libraries to link a library or executable target against
-target_link_libraries(teleop_rafi_node
-  teleop_rafi_joy
-  ${catkin_LIBRARIES}
-)
+#target_link_libraries(teleop_rafi_node
+#  teleop_rafi_joy
+#  ${catkin_LIBRARIES}
+#)
 
 #############
 ## Install ##
